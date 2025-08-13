@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Admin Panel - Coook</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>🔐 Admin Panel - Coook</h1>
+            <div class="admin-info">
+                <span class="status online">🟢 Online</span>
+                <span class="cafe-count">Total: <span id="totalCafes">0</span> cafés</span>
+                <button id="refreshBtn" class="btn-refresh">🔄 Refresh</button>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <!-- Управление городами -->
+            <section class="cities-section">
+                <h2>🌍 Gerenciar Cidades</h2>
+                <form id="cityForm" class="city-form">
+                    <div class="form-group">
+                        <label for="cityKey">Chave da Cidade (ID)</label>
+                        <input type="text" id="cityKey" required placeholder="Ex: sao-paulo, rio-de-janeiro">
+                        <small>Use apenas letras minúsculas, hífens e números</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="cityDisplayName">Nome de Exibição</label>
+                        <input type="text" id="cityDisplayName" required placeholder="Ex: São Paulo, Rio de Janeiro">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar Cidade</button>
+                </form>
+                
+                <div class="cities-list" id="citiesList">
+                    <!-- Список городов будет загружаться динамически -->
+                </div>
+            </section>
+
+            <!-- Форма добавления/редактирования -->
+            <section class="form-section">
+                <h2 id="formTitle">➕ Adicionar Novo Café</h2>
+                <form id="cafeForm" class="cafe-form">
+                    <input type="hidden" id="cafeId" value="">
+                    
+                    <div class="form-group">
+                        <label for="cafeName">Nome do Café *</label>
+                        <input type="text" id="cafeName" required placeholder="Digite o nome do café">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cafeCity">Cidade *</label>
+                        <select id="cafeCity" required>
+                            <option value="">Selecione a cidade</option>
+                            <!-- Города будут загружаться динамически -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cafeDescription">Descrição Completa *</label>
+                        <textarea id="cafeDescription" required rows="3" placeholder="Descreva o café em detalhes"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cafeShortDescription">Descrição Curta *</label>
+                        <input type="text" id="cafeShortDescription" required placeholder="Descrição breve para o card">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cafeImage">URL da Imagem Principal *</label>
+                        <input type="url" id="cafeImage" required placeholder="https://exemplo.com/imagem.jpg">
+                        <div class="image-preview">
+                            <img id="imagePreview" src="" alt="Preview" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cafeGallery">URLs das Imagens da Galeria (uma por linha)</label>
+                        <textarea id="cafeGallery" rows="3" placeholder="https://exemplo.com/imagem1.jpg&#10;https://exemplo.com/imagem2.jpg&#10;https://exemplo.com/imagem3.jpg"></textarea>
+                    </div>
+
+                    <div class="hours-section">
+                        <h3>Horário de Funcionamento</h3>
+                        <div class="hours-grid">
+                            <div class="hour-item">
+                                <label for="hoursMonday">Segunda a Sexta</label>
+                                <input type="text" id="hoursMonday" placeholder="7:00 - 20:00">
+                            </div>
+                            <div class="hour-item">
+                                <label for="hoursSaturday">Sábado</label>
+                                <input type="text" id="hoursSaturday" placeholder="8:00 - 18:00">
+                            </div>
+                            <div class="hour-item">
+                                <label for="hoursSunday">Domingo</label>
+                                <input type="text" id="hoursSunday" placeholder="8:00 - 16:00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Salvar Café</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="deleteBtn" style="display: none;">Excluir</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Список всех кафе -->
+            <section class="list-section">
+                <h2>📋 Lista de Cafés</h2>
+                <div class="filters">
+                    <select id="cityFilter">
+                        <option value="">Todas as cidades</option>
+                        <!-- Города будут загружаться динамически -->
+                    </select>
+                    <input type="text" id="searchFilter" placeholder="Buscar por nome...">
+                </div>
+                
+                <div class="cafes-list" id="cafesList">
+                    <!-- Кафе будут загружаться динамически -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+            <title>Coook - Encontre os Melhores Cafés</title>
+    <link rel="stylesheet" href="telegram-styles.css">
+</head>
+<body>
+    <div class="telegram-container">
+        <!-- Telegram Header -->
+        <header class="telegram-header">
+            <div class="header-content">
+                <h1>☕ Coook</h1>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <!-- Города будут загружаться динамически -->
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="telegram-main">
+            <div class="cafes-container" id="cafesContainer">
+                <!-- Кафе будут загружаться динамически -->
+            </div>
+        </main>
+
+        <!-- Telegram Main Button -->
+        <div class="telegram-main-button" id="mainButton" style="display: none;">
+            <span>Fechar</span>
+        </div>
+
+        <!-- Модальное окно для карточки кафе -->
+        <div id="cafeModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="back-button" id="backButton">← Voltar</button>
+                    <button class="close-button" id="closeButton">✕</button>
+                </div>
+                <div id="cafeDetails">
+                    <!-- Детали кафе будут загружаться динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram Configuration -->
+    <script src="telegram-config.js"></script>
+    <script src="telegram-app.js"></script>
+</body>
+</html>

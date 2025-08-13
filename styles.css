@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-content {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.city-selector {
+    width: 100%;
+    max-width: 280px;
+}
+
+.city-selector select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.city-selector select option {
+    background: #667eea;
+    color: white;
+}
+
+main {
+    padding: 15px;
+}
+
+.cafes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.cafe-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: 1px solid #e9ecef;
+}
+
+.cafe-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.cafe-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.cafe-info {
+    padding: 15px;
+}
+
+.cafe-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    line-height: 1.3;
+}
+
+.cafe-description {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 90vh;
+    overflow-y: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #666;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(255,255,255,0.9);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.cafe-details {
+    padding: 20px 15px;
+}
+
+.cafe-details h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #333;
+    padding-right: 40px;
+}
+
+.cafe-details img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.cafe-details .description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.cafe-details .hours {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.cafe-details .hours h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.cafe-details .hours p {
+    color: #666;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.gallery h3 {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Планшеты */
+@media (min-width: 768px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .cafes-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 1200px;
+        margin: 15px auto 0;
+    }
+    
+    .cafe-card {
+        margin-bottom: 0;
+    }
+    
+    .modal-content {
+        width: 90%;
+        max-width: 500px;
+        height: 80vh;
+        margin: 10% auto;
+        border-radius: 20px;
+        position: relative;
+        bottom: auto;
+        left: auto;
+    }
+    
+    .cafe-image {
+        height: 180px;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1024px) {
+    .cafes-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .cafe-image {
+        height: 200px;
+    }
+    
+    .cafe-info {
+        padding: 20px;
+    }
+    
+    .cafe-name {
+        font-size: 18px;
+    }
+    
+    .cafe-description {
+        font-size: 14px;
+    }
+}
+
+/* Большие экраны */
+@media (min-width: 1200px) {
+    .cafes-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
